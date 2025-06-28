@@ -25,26 +25,6 @@ export class AppComponent
         });
     }
 
-    public changeScene()
-    {
-        const scene = this.phaserRef().scene as MainMenu;
-        if (scene)
-        {
-            scene.changeScene();
-        }
-    }
-
-    public moveSprite()
-    {
-        const scene = this.phaserRef().scene as MainMenu;
-        if (scene)
-        {
-            scene.moveLogo(({ x, y }) => {
-                this.spritePosition = { x, y };
-            });
-        }
-    }
-
     public addSprite()
     {
         const scene = this.phaserRef().scene;
