@@ -15,9 +15,20 @@ export class MainMenu extends Scene {
     background6: Phaser.GameObjects.Image;
     background7: Phaser.GameObjects.Image;
     background8: Phaser.GameObjects.Image;
+    background9: Phaser.GameObjects.Image;
+    background10: Phaser.GameObjects.Image;
     planeTweenStarted: boolean = false;
+    sateTweenStarted: boolean = false;
+    cometStartTween: boolean = false;
+    ufoStartTween: boolean = false;
+    teslaStartTween: boolean = false;
+    startCometTween: Phaser.Tweens.Tween;
+    startSateTween: Phaser.Tweens.Tween;
     startPlaneTween: Phaser.Tweens.Tween;
-    
+    startUfoTween: Phaser.Tweens.Tween;
+    startTeslaTween: Phaser.Tweens.Tween;
+    heatHoldTime: number = 0;
+    heatText: Phaser.GameObjects.Text;
 
     constructor() {
         super('MainMenu');
@@ -35,6 +46,8 @@ export class MainMenu extends Scene {
         this.load.image('background6', 'assets/images/moon.png');
         this.load.image('background7', 'assets/images/comet.png');
         this.load.image('background8', 'assets/images/satelite.png');
+        this.load.image('background9', 'assets/images/ufo.png');
+        this.load.image('background10', 'assets/images/tesla.png');
         this.load.spritesheet('fire', 'assets/images/fire.png', {
             frameWidth: 48 / 3,
             frameHeight: 30 / 1,
@@ -57,10 +70,10 @@ export class MainMenu extends Scene {
         //     .setDepth(-1);
         this.background3 = this.add
             .tileSprite(
-                150,
-                -2200,
+                50,
+                -6200,
                 this.cameras.main.width,
-                this.cameras.main.height*3,
+                this.cameras.main.height * 10,
                 'background3'
             )
             .setOrigin(0)
@@ -78,14 +91,22 @@ export class MainMenu extends Scene {
             duration: 1000,
         });
 
-        this.background4 = this.add.sprite(150, 400, 'background4').setDepth(2);
+        this.background4 = this.add.sprite(-60, -400, 'background4').setDepth(2);
         this.background4.play('plane');
-        this.background5 = this.add.image(-50, 475, 'background5').setDepth(2);
+        this.background5 = this.add.image(-50, -475, 'background5').setDepth(2);
         this.background6 = this.add
-            .image(1050, -700, 'background6')
+            .image(1250, -700, 'background6')
             .setDepth(1);
-        this.background7 = this.add.image(150, -900, 'background7').setDepth(1);
-        this.background8 = this.add.image(150, -1300, 'background8').setDepth(2);
+        this.background7 = this.add.image(65, -900, 'background7').setDepth(1);
+        this.background8 = this.add
+            .image(width * 0.9, -1250, 'background8')
+            .setDepth(2);
+        this.background9 = this.add
+            .image(10 , -1850, 'background9')
+            .setDepth(2);
+        this.background10 = this.add
+            .image(width * 0.9 , -2450, 'background10')
+            .setDepth(2);
 
         this.anims.create({
             key: 'onfire',
@@ -97,11 +118,19 @@ export class MainMenu extends Scene {
             repeat: -1,
         });
 
+        this.startCometTween = this.add.tween({
+            targets: this.background7,
+            x: width - 950,
+            y: height + 200,
+            duration: 10000,
+            paused: true
+        })
+
         this.startPlaneTween = this.add.tween({
             targets: this.background4,
-            x: width - 200,
+            x: width - 100,
             y: height + 100,
-            duration: 5000,
+            duration: 10000,
             paused: true,
             onUpdate: () => {
                 this.background5.x = this.background4.x - 510;
@@ -109,13 +138,26 @@ export class MainMenu extends Scene {
             },
         });
 
-        this.planeTweenStarted = false
-        this.add.tween({
+        this.planeTweenStarted = false;
+        this.startSateTween = this.add.tween({
             targets: this.background8,
-            x: -100,
-            duration: 2000,
-            repeat: -1
-        })
+            x: -50,
+            duration: 20000,
+            paused: true
+        });
+        this.startUfoTween = this.add.tween({
+            targets: this.background9,
+            x:width + 100,
+            duration: 20000,
+            paused: true
+        });
+        this.startTeslaTween = this.add.tween({
+            targets: this.background10,
+            x: -50,
+            angle: - 45,
+            duration: 20000,
+            paused: true
+        });
 
         let fireOn: Phaser.GameObjects.Sprite | null = null;
 
@@ -163,14 +205,14 @@ export class MainMenu extends Scene {
             .setInteractive()
             .on('pointerdown', () => {});
 
-        this.add.text(450, 230, '1.00X');
+        this.add.text(585, 240, '1.00X').setScale(2.2).setDepth(11);
 
         EventBus.emit('current-scene-ready', this);
     }
 
-    override update() {
+    override update(time: number, delta: number) {
         if (this.isHeating) {
-            const speed = 1.7;
+            const speed = 0.7;
 
             this.background1.y += speed;
             this.background2.y += speed;
@@ -180,12 +222,33 @@ export class MainMenu extends Scene {
             this.background6.y += speed;
             this.background7.y += speed;
             this.background8.y += speed;
+            this.background9.y += speed;
+            this.background10.y += speed;
 
-            
-        }
-        if (!this.planeTweenStarted && this.background2.y >= 90) {
-            this.startPlaneTween.play();
-            this.planeTweenStarted = true;
+            this.heatHoldTime += delta;
+            const seconds = (this.heatHoldTime / 1000).toFixed(1);
+            console.log(seconds);
+
+            if (!this.planeTweenStarted && seconds === '11.2') {
+                this.startPlaneTween.play();
+                this.planeTweenStarted = true;
+            }
+            if (!this.cometStartTween && seconds === '18.2') {
+                this.startCometTween.play();
+                this.cometStartTween = true;
+            }
+            if (!this.sateTweenStarted && seconds === '28.0') {
+                this.startSateTween.play();
+                this.sateTweenStarted = true;
+            }
+            if (!this.ufoStartTween && seconds === '43.0') {
+                this.startUfoTween.play();
+                this.ufoStartTween = true;
+            }
+            if (!this.teslaStartTween && seconds === '56.0') {
+                this.startTeslaTween.play();
+                this.teslaStartTween = true;
+            }
         }
     }
 }
