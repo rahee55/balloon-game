@@ -17,11 +17,14 @@ export class MainMenu extends Scene {
     background8: Phaser.GameObjects.Image;
     background9: Phaser.GameObjects.Image;
     background10: Phaser.GameObjects.Image;
+    background11: Phaser.GameObjects.Image;
+    background12: Phaser.GameObjects.Image;
     planeTweenStarted: boolean = false;
     sateTweenStarted: boolean = false;
     cometStartTween: boolean = false;
     ufoStartTween: boolean = false;
     teslaStartTween: boolean = false;
+    background12Shown: boolean = false;
     startCometTween: Phaser.Tweens.Tween;
     startSateTween: Phaser.Tweens.Tween;
     startPlaneTween: Phaser.Tweens.Tween;
@@ -58,6 +61,34 @@ export class MainMenu extends Scene {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
+        const canvas = this.textures.createCanvas('gradient', width, 400);
+        const canvas2 = this.textures.createCanvas('gradient2', width, height);
+
+        if (canvas) {
+            const ctx = canvas.getContext();
+            const gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, 'rgba(247, 221, 154, 0.1)');
+            gradient.addColorStop(0.3, 'rgba(240, 213, 146, 1)');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, 400);
+            canvas.refresh();
+        }
+        if (canvas2) {
+            const ctx = canvas2.getContext();
+            const gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, 'rgba(63, 60, 235, 0.99)');
+            gradient.addColorStop(0.99, 'rgba(240, 213, 146, 0)');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+            canvas2.refresh();
+        }
+        this.background11 = this.add.image(670, 250, 'gradient').setDepth(-1);
+        this.background12 = this.add
+            .image(670, height - 310, 'gradient2')
+            .setDepth(-1)
+            .setVisible(false);
         this.add.image(width * 0.469, height * 0.51, 'balloon').setDepth(10);
         this.background1 = this.add
             .image(650, 1250, 'background1')
@@ -71,7 +102,7 @@ export class MainMenu extends Scene {
         this.background3 = this.add
             .tileSprite(
                 50,
-                -6200,
+                -6950,
                 this.cameras.main.width,
                 this.cameras.main.height * 10,
                 'background3'
@@ -91,7 +122,9 @@ export class MainMenu extends Scene {
             duration: 1000,
         });
 
-        this.background4 = this.add.sprite(-60, -400, 'background4').setDepth(2);
+        this.background4 = this.add
+            .sprite(-60, -400, 'background4')
+            .setDepth(2);
         this.background4.play('plane');
         this.background5 = this.add.image(-50, -475, 'background5').setDepth(2);
         this.background6 = this.add
@@ -101,11 +134,9 @@ export class MainMenu extends Scene {
         this.background8 = this.add
             .image(width * 0.9, -1250, 'background8')
             .setDepth(2);
-        this.background9 = this.add
-            .image(10 , -1850, 'background9')
-            .setDepth(2);
+        this.background9 = this.add.image(10, -1850, 'background9').setDepth(2);
         this.background10 = this.add
-            .image(width * 0.9 , -2450, 'background10')
+            .image(width * 0.9, -2450, 'background10')
             .setDepth(2);
 
         this.anims.create({
@@ -123,8 +154,8 @@ export class MainMenu extends Scene {
             x: width - 950,
             y: height + 200,
             duration: 10000,
-            paused: true
-        })
+            paused: true,
+        });
 
         this.startPlaneTween = this.add.tween({
             targets: this.background4,
@@ -143,20 +174,20 @@ export class MainMenu extends Scene {
             targets: this.background8,
             x: -50,
             duration: 20000,
-            paused: true
+            paused: true,
         });
         this.startUfoTween = this.add.tween({
             targets: this.background9,
-            x:width + 100,
+            x: width + 100,
             duration: 20000,
-            paused: true
+            paused: true,
         });
         this.startTeslaTween = this.add.tween({
             targets: this.background10,
             x: -50,
-            angle: - 45,
+            angle: -45,
             duration: 20000,
-            paused: true
+            paused: true,
         });
 
         let fireOn: Phaser.GameObjects.Sprite | null = null;
@@ -224,10 +255,15 @@ export class MainMenu extends Scene {
             this.background8.y += speed;
             this.background9.y += speed;
             this.background10.y += speed;
+            this.background11.y += speed;
+            // this.background12.y += speed;
 
             this.heatHoldTime += delta;
             const seconds = (this.heatHoldTime / 1000).toFixed(1);
             console.log(seconds);
+
+            const background3Speed = seconds <= '19.0' ? speed : 0.9;
+            this.background3.y += background3Speed;
 
             if (!this.planeTweenStarted && seconds === '11.2') {
                 this.startPlaneTween.play();
@@ -241,6 +277,15 @@ export class MainMenu extends Scene {
                 this.startSateTween.play();
                 this.sateTweenStarted = true;
             }
+            if (!this.sateTweenStarted && seconds === '28.0') {
+                this.startSateTween.play();
+                this.sateTweenStarted = true;
+            }
+            if (!this.background12Shown && seconds === '32.0') {
+                this.background12.setVisible(true);
+                this.background12Shown = true;
+            }
+
             if (!this.ufoStartTween && seconds === '43.0') {
                 this.startUfoTween.play();
                 this.ufoStartTween = true;
