@@ -67,7 +67,7 @@ export class MainMenu extends Scene {
         if (canvas) {
             const ctx = canvas.getContext();
             const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, 'rgba(247, 221, 154, 0.1)');
+            gradient.addColorStop(0, 'rgba(247, 221, 154, 0)');
             gradient.addColorStop(0.3, 'rgba(240, 213, 146, 1)');
 
             ctx.fillStyle = gradient;
