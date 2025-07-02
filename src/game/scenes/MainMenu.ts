@@ -25,6 +25,7 @@ export class MainMenu extends Scene {
     ufoStartTween: boolean = false;
     teslaStartTween: boolean = false;
     background12Shown: boolean = false;
+    background3Speed: boolean = false;
     startCometTween: Phaser.Tweens.Tween;
     startSateTween: Phaser.Tweens.Tween;
     startPlaneTween: Phaser.Tweens.Tween;
@@ -262,9 +263,6 @@ export class MainMenu extends Scene {
             const seconds = (this.heatHoldTime / 1000).toFixed(1);
             console.log(seconds);
 
-            const background3Speed = seconds <= '19.0' ? speed : 0.9;
-            this.background3.y += background3Speed;
-
             if (!this.planeTweenStarted && seconds === '11.2') {
                 this.startPlaneTween.play();
                 this.planeTweenStarted = true;
@@ -279,6 +277,10 @@ export class MainMenu extends Scene {
             }
             if (!this.sateTweenStarted && seconds === '28.0') {
                 this.startSateTween.play();
+                this.sateTweenStarted = true;
+            }
+            if (!this.background3Speed && seconds === '25.0') {
+                this.background3.y += 0.9;
                 this.sateTweenStarted = true;
             }
             if (!this.background12Shown && seconds === '32.0') {
