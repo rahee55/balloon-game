@@ -105,7 +105,7 @@ export class MainMenu extends Scene {
         this.background3 = this.add
             .tileSprite(
                 50,
-                -12450,
+                -12650,
                 this.cameras.main.width,
                 this.cameras.main.height * 20,
                 'background3'
@@ -131,15 +131,15 @@ export class MainMenu extends Scene {
         this.background4.play('plane');
         this.background5 = this.add.image(-50, -475, 'background5').setDepth(2);
         this.background6 = this.add
-            .image(1250, -700, 'background6')
+            .image(1250, -900, 'background6')
             .setDepth(1);
-        this.background7 = this.add.image(65, -900, 'background7').setDepth(1);
+        this.background7 = this.add.image(65, -1350, 'background7').setDepth(1);
         this.background8 = this.add
-            .image(width * 0.9, -1250, 'background8')
+            .image(width * 0.9, -1450, 'background8')
             .setDepth(2);
-        this.background9 = this.add.image(10, -1850, 'background9').setDepth(2);
+        this.background9 = this.add.image(10, -2050, 'background9').setDepth(2);
         this.background10 = this.add
-            .image(width * 0.9, -2450, 'background10')
+            .image(width * 0.9, -2650, 'background10')
             .setDepth(2);
 
         this.anims.create({
@@ -281,18 +281,18 @@ export class MainMenu extends Scene {
                 this.startPlaneTween.play();
                 this.planeTweenStarted = true;
             }
-            if (!this.cometStartTween && seconds === '13.2') {
+            if (!this.cometStartTween && seconds === '20.2') {
                 this.startCometTween.play();
                 this.cometStartTween = true;
             }
-            if (!this.sateTweenStarted && seconds === '28.0') {
+            if (!this.sateTweenStarted && seconds === '32.2') {
                 this.startSateTween.play();
                 this.sateTweenStarted = true;
             }
-            if (parseFloat(seconds) >= 25.0) {
+            if (parseFloat(seconds) >= 33.0) {
                 this.background3.y += 0.99 * this.background3SpeedMultiplier;
             }
-            if (parseFloat(seconds) >= 25.0 && !this.background3Speed) {
+            if (parseFloat(seconds) >= 33.0 && !this.background3Speed) {
                 this.tweens.addCounter({
                     from: 0,
                     to: 1,
@@ -305,7 +305,7 @@ export class MainMenu extends Scene {
                 this.background3Speed = true;
             }
 
-            if (!this.background12Shown && seconds === '22.0') {
+            if (!this.background12Shown && seconds === '32.0') {
                 this.background12.setVisible(true);
                 this.background12Shown = true;
                 this.tweens.add({
@@ -315,11 +315,11 @@ export class MainMenu extends Scene {
                     ease: 'Linear',
                 });
             }
-            if (!this.ufoStartTween && seconds === '43.0') {
+            if (!this.ufoStartTween && seconds === '47.2') {
                 this.startUfoTween.play();
                 this.ufoStartTween = true;
             }
-            if (!this.teslaStartTween && seconds === '56.0') {
+            if (!this.teslaStartTween && seconds === '60.2') {
                 this.startTeslaTween.play();
                 this.teslaStartTween = true;
             }
