@@ -78,8 +78,8 @@ export class MainMenu extends Scene {
         if (canvas2) {
             const ctx = canvas2.getContext();
             const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, 'rgba(63, 60, 235, 0.99)');
-            gradient.addColorStop(0.99, 'rgba(240, 213, 146, 0)');
+            gradient.addColorStop(0, 'rgba(11, 8, 168, 0.99)');
+            gradient.addColorStop(0.99, 'rgba(73, 88, 226, 0.47)');
 
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, width, height);
@@ -103,7 +103,7 @@ export class MainMenu extends Scene {
         this.background3 = this.add
             .tileSprite(
                 50,
-                -6950,
+                -6350,
                 this.cameras.main.width,
                 this.cameras.main.height * 10,
                 'background3'
@@ -213,18 +213,18 @@ export class MainMenu extends Scene {
                 this.isHeating = true;
             })
             .on('pointerup', () => {
-                if (fireOn) {
-                    fireOn.destroy();
-                    fireOn = null;
-                }
-                this.isHeating = false;
+                // if (fireOn) {
+                //     fireOn.destroy();
+                //     fireOn = null;
+                // }
+                // this.isHeating = false;
             })
             .on('pointerout', () => {
-                if (fireOn) {
-                    fireOn.destroy();
-                    fireOn = null;
-                }
-                this.isHeating = false;
+                // if (fireOn) {
+                //     fireOn.destroy();
+                //     fireOn = null;
+                // }
+                // this.isHeating = false;
             });
 
         this.add
@@ -235,7 +235,12 @@ export class MainMenu extends Scene {
                 padding: { x: 10, y: 5 },
             })
             .setInteractive()
-            .on('pointerdown', () => {});
+            .on('pointerdown', () => {
+                this.scene.restart();
+                this.tweens.killAll();
+                this.heatHoldTime = 0;
+                this.isHeating = false;
+            });
 
         this.add.text(585, 240, '1.00X').setScale(2.2).setDepth(11);
 
@@ -275,19 +280,13 @@ export class MainMenu extends Scene {
                 this.startSateTween.play();
                 this.sateTweenStarted = true;
             }
-            if (!this.sateTweenStarted && seconds === '28.0') {
-                this.startSateTween.play();
-                this.sateTweenStarted = true;
+            if (parseFloat(seconds) >= 25.0) {
+                this.background3.y += 0.99;
             }
-            if (!this.background3Speed && seconds === '25.0') {
-                this.background3.y += 0.9;
-                this.sateTweenStarted = true;
-            }
-            if (!this.background12Shown && seconds === '32.0') {
+            if (!this.background12Shown && seconds === '22.0') {
                 this.background12.setVisible(true);
                 this.background12Shown = true;
             }
-
             if (!this.ufoStartTween && seconds === '43.0') {
                 this.startUfoTween.play();
                 this.ufoStartTween = true;
