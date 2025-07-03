@@ -105,9 +105,9 @@ export class MainMenu extends Scene {
         this.background3 = this.add
             .tileSprite(
                 50,
-                -6350,
+                -12450,
                 this.cameras.main.width,
-                this.cameras.main.height * 10,
+                this.cameras.main.height * 20,
                 'background3'
             )
             .setOrigin(0)
@@ -183,7 +183,7 @@ export class MainMenu extends Scene {
         this.startUfoTween = this.add.tween({
             targets: this.background9,
             x: width + 100,
-            angle: -30,
+            angle: -50,
             duration: 20000,
             paused: true,
         });
