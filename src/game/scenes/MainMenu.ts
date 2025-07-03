@@ -33,6 +33,7 @@ export class MainMenu extends Scene {
     startTeslaTween: Phaser.Tweens.Tween;
     heatHoldTime: number = 0;
     heatText: Phaser.GameObjects.Text;
+    background3SpeedMultiplier: number = 0;
 
     constructor() {
         super('MainMenu');
@@ -79,7 +80,7 @@ export class MainMenu extends Scene {
             const ctx = canvas2.getContext();
             const gradient = ctx.createLinearGradient(0, 0, 0, height);
             gradient.addColorStop(0, 'rgba(11, 8, 168, 0.99)');
-            gradient.addColorStop(0.99, 'rgba(73, 88, 226, 0.47)');
+            gradient.addColorStop(0.99, 'rgba(11, 29, 192, 0.81)');
 
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, width, height);
@@ -175,12 +176,14 @@ export class MainMenu extends Scene {
         this.startSateTween = this.add.tween({
             targets: this.background8,
             x: -50,
+            angle: 150,
             duration: 20000,
             paused: true,
         });
         this.startUfoTween = this.add.tween({
             targets: this.background9,
             x: width + 100,
+            angle: -30,
             duration: 20000,
             paused: true,
         });
@@ -191,7 +194,6 @@ export class MainMenu extends Scene {
             duration: 20000,
             paused: true,
         });
-
         let fireOn: Phaser.GameObjects.Sprite | null = null;
 
         const heatButton = this.add
@@ -205,7 +207,7 @@ export class MainMenu extends Scene {
             .on('pointerdown', () => {
                 if (!fireOn) {
                     fireOn = this.add.sprite(
-                        width * 0.468,
+                        width * 0.4688,
                         height * 0.683,
                         'fire'
                     );
@@ -238,9 +240,16 @@ export class MainMenu extends Scene {
             .setInteractive()
             .on('pointerdown', () => {
                 this.scene.restart();
-                this.tweens.killAll();
                 this.heatHoldTime = 0;
                 this.isHeating = false;
+                this.planeTweenStarted = false;
+                this.cometStartTween = false;
+                this.sateTweenStarted = false;
+                this.ufoStartTween = false;
+                this.teslaStartTween = false;
+                this.background12Shown = false;
+                this.background3Speed = false;
+                this.background3SpeedMultiplier = 0;
             });
 
         this.add.text(585, 240, '1.00X').setScale(2.2).setDepth(11);
@@ -258,12 +267,11 @@ export class MainMenu extends Scene {
             this.background4.y += speed;
             this.background5.y += speed;
             this.background6.y += speed;
-            this.background7.y += speed;
+            this.background7.y += 0.99;
             this.background8.y += speed;
             this.background9.y += speed;
             this.background10.y += speed;
             this.background11.y += speed;
-            // this.background12.y += speed;
 
             this.heatHoldTime += delta;
             const seconds = (this.heatHoldTime / 1000).toFixed(1);
@@ -273,7 +281,7 @@ export class MainMenu extends Scene {
                 this.startPlaneTween.play();
                 this.planeTweenStarted = true;
             }
-            if (!this.cometStartTween && seconds === '18.2') {
+            if (!this.cometStartTween && seconds === '13.2') {
                 this.startCometTween.play();
                 this.cometStartTween = true;
             }
@@ -282,15 +290,28 @@ export class MainMenu extends Scene {
                 this.sateTweenStarted = true;
             }
             if (parseFloat(seconds) >= 25.0) {
-                this.background3.y += 0.92;
+                this.background3.y += 0.99 * this.background3SpeedMultiplier;
             }
+            if (parseFloat(seconds) >= 25.0 && !this.background3Speed) {
+                this.tweens.addCounter({
+                    from: 0,
+                    to: 1,
+                    duration: 3000,
+                    ease: 'Sine.easeInOut',
+                    onUpdate: (tween) => {
+                        this.background3SpeedMultiplier = tween.getValue() ?? 0;
+                    },
+                });
+                this.background3Speed = true;
+            }
+
             if (!this.background12Shown && seconds === '22.0') {
                 this.background12.setVisible(true);
                 this.background12Shown = true;
                 this.tweens.add({
                     targets: this.background12,
                     alpha: 1,
-                    duration: 5000, 
+                    duration: 10000,
                     ease: 'Linear',
                 });
             }
