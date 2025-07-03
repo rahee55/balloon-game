@@ -89,7 +89,8 @@ export class MainMenu extends Scene {
         this.background12 = this.add
             .image(670, height - 310, 'gradient2')
             .setDepth(-1)
-            .setVisible(false);
+            .setVisible(false)
+            .setAlpha(0);
         this.add.image(width * 0.469, height * 0.51, 'balloon').setDepth(10);
         this.background1 = this.add
             .image(650, 1250, 'background1')
@@ -281,11 +282,17 @@ export class MainMenu extends Scene {
                 this.sateTweenStarted = true;
             }
             if (parseFloat(seconds) >= 25.0) {
-                this.background3.y += 0.99;
+                this.background3.y += 0.92;
             }
             if (!this.background12Shown && seconds === '22.0') {
                 this.background12.setVisible(true);
                 this.background12Shown = true;
+                this.tweens.add({
+                    targets: this.background12,
+                    alpha: 1,
+                    duration: 5000, 
+                    ease: 'Linear',
+                });
             }
             if (!this.ufoStartTween && seconds === '43.0') {
                 this.startUfoTween.play();
