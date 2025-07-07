@@ -34,6 +34,8 @@ export class MainMenu extends Scene {
     heatHoldTime: number = 0;
     heatText: Phaser.GameObjects.Text;
     background3SpeedMultiplier: number = 0;
+    canvas: Phaser.Textures.CanvasTexture | null = null;
+    canvas2: Phaser.Textures.CanvasTexture | null = null;
 
     constructor() {
         super('MainMenu');
@@ -63,266 +65,592 @@ export class MainMenu extends Scene {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
-        const canvas = this.textures.createCanvas('gradient', width, 400);
-        const canvas2 = this.textures.createCanvas('gradient2', width, height);
+        switch (true) {
+            case width <= 320:
+                this.canvas = this.textures.createCanvas(
+                    'gradient',
+                    width,
+                    450
+                );
+                this.canvas2 = this.textures.createCanvas(
+                    'gradient2',
+                    width,
+                    height
+                );
 
-        if (canvas) {
-            const ctx = canvas.getContext();
-            const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, 'rgba(247, 221, 154, 0)');
-            gradient.addColorStop(0.3, 'rgba(240, 213, 146, 1)');
+                if (this.canvas) {
+                    const ctx = this.canvas.getContext();
+                    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+                    gradient.addColorStop(0, 'rgba(247, 221, 154, 0)');
+                    gradient.addColorStop(0.295, 'rgba(240, 213, 146, 0.95)');
 
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, width, 400);
-            canvas.refresh();
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, width, 400);
+                    this.canvas.refresh();
+                }
+                if (this.canvas2) {
+                    const ctx = this.canvas2.getContext();
+                    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+                    gradient.addColorStop(0, 'rgba(11, 8, 168, 0.99)');
+                    gradient.addColorStop(0.99, 'rgba(11, 29, 192, 0.81)');
+
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, width, height);
+                    this.canvas2.refresh();
+                }
+                this.background11 = this.add
+                    .image(160, 250, 'gradient')
+                    .setDepth(-1);
+                this.background12 = this.add
+                    .image(160, height - 285, 'gradient2')
+                    .setDepth(-1)
+                    .setVisible(false)
+                    .setAlpha(0);
+                break;
+
+            default:
+                const canvas = this.textures.createCanvas(
+                    'gradient',
+                    width,
+                    400
+                );
+                const canvas2 = this.textures.createCanvas(
+                    'gradient2',
+                    width,
+                    height
+                );
+
+                if (canvas) {
+                    const ctx = canvas.getContext();
+                    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+                    gradient.addColorStop(0, 'rgba(247, 221, 154, 0)');
+                    gradient.addColorStop(0.3, 'rgba(240, 213, 146, 1)');
+
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, width, 400);
+                    canvas.refresh();
+                }
+                if (canvas2) {
+                    const ctx = canvas2.getContext();
+                    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+                    gradient.addColorStop(0, 'rgba(11, 8, 168, 0.99)');
+                    gradient.addColorStop(0.99, 'rgba(11, 29, 192, 0.81)');
+
+                    ctx.fillStyle = gradient;
+                    ctx.fillRect(0, 0, width, height);
+                    canvas2.refresh();
+                }
+                this.background11 = this.add
+                    .image(670, 250, 'gradient')
+                    .setDepth(-1);
+                this.background12 = this.add
+                    .image(670, height - 310, 'gradient2')
+                    .setDepth(-1)
+                    .setVisible(false)
+                    .setAlpha(0);
+                break;
         }
-        if (canvas2) {
-            const ctx = canvas2.getContext();
-            const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, 'rgba(11, 8, 168, 0.99)');
-            gradient.addColorStop(0.99, 'rgba(11, 29, 192, 0.81)');
+        switch (true) {
+            case width <= 320:
+                this.add
+                    .image(width * 0.489, height * 0.51, 'balloon')
+                    .setDepth(10);
+                this.background1 = this.add
+                    .image(160, 450, 'background1')
+                    .setScale(0.34)
+                    .setDepth(-1);
+                this.background2 = this.add
+                    .image(150, 90, 'background2')
+                    .setScale(0.25)
+                    .setDepth(-1);
+                this.background3 = this.add
+                    .tileSprite(
+                        10,
+                        -11850,
+                        this.cameras.main.width,
+                        this.cameras.main.height * 20,
+                        'background3'
+                    )
+                    .setOrigin(0)
+                    .setScrollFactor(0)
+                    .setDepth(-1);
 
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, width, height);
-            canvas2.refresh();
+                this.anims.create({
+                    key: 'plane',
+                    frames: this.anims.generateFrameNumbers('background4', {
+                        start: 0,
+                        end: 1,
+                    }),
+                    frameRate: 10,
+                    repeat: -1,
+                    duration: 4000,
+                });
+
+                this.background4 = this.add
+                    .sprite(-50, -300, 'background4')
+                    .setDepth(2);
+                this.background4.play('plane');
+                this.background5 = this.add
+                    .image(-50, -475, 'background5')
+                    .setDepth(2);
+                this.background6 = this.add
+                    .image(220, -900, 'background6')
+                    .setDepth(1);
+                this.background7 = this.add
+                    .image(5, -1350, 'background7')
+                    .setDepth(1)
+                    .setScale(0.8);
+                this.background8 = this.add
+                    .image(width * 0.9, -1450, 'background8')
+                    .setDepth(2);
+                this.background9 = this.add
+                    .image(10, -2050, 'background9')
+                    .setDepth(2);
+                this.background10 = this.add
+                    .image(width * 0.9, -2650, 'background10')
+                    .setDepth(2);
+
+                this.anims.create({
+                    key: 'onfire',
+                    frames: this.anims.generateFrameNumbers('fire', {
+                        start: 0,
+                        end: 2,
+                    }),
+                    frameRate: 10,
+                    repeat: -1,
+                });
+
+                this.startCometTween = this.add.tween({
+                    targets: this.background7,
+                    x: width - 150,
+                    y: height + 100,
+                    duration: 10000,
+                    paused: true,
+                });
+
+                this.startPlaneTween = this.add.tween({
+                    targets: this.background4,
+                    x: width - 20,
+                    y: height + 100,
+                    duration: 10000,
+                    paused: true,
+                    onUpdate: () => {
+                        this.background5.x = this.background4.x - 510;
+                        this.background5.y = this.background4.y + 80;
+                    },
+                });
+
+                this.planeTweenStarted = false;
+                this.startSateTween = this.add.tween({
+                    targets: this.background8,
+                    x: -50,
+                    angle: 150,
+                    duration: 20000,
+                    paused: true,
+                });
+                this.startUfoTween = this.add.tween({
+                    targets: this.background9,
+                    x: width + 100,
+                    angle: -50,
+                    duration: 20000,
+                    paused: true,
+                });
+                this.startTeslaTween = this.add.tween({
+                    targets: this.background10,
+                    x: -50,
+                    angle: -45,
+                    duration: 20000,
+                    paused: true,
+                });
+                break;
+            default:
+                this.add
+                    .image(width * 0.469, height * 0.51, 'balloon')
+                    .setDepth(10);
+                this.background1 = this.add
+                    .image(650, 1250, 'background1')
+                    .setScale(1.5)
+                    .setDepth(-1);
+                this.background2 = this.add
+                    .image(650, 90, 'background2')
+                    .setDepth(-1);
+                this.background3 = this.add
+                    .tileSprite(
+                        50,
+                        -12650,
+                        this.cameras.main.width,
+                        this.cameras.main.height * 20,
+                        'background3'
+                    )
+                    .setOrigin(0)
+                    .setScrollFactor(0)
+                    .setDepth(-1);
+
+                this.anims.create({
+                    key: 'plane',
+                    frames: this.anims.generateFrameNumbers('background4', {
+                        start: 0,
+                        end: 1,
+                    }),
+                    frameRate: 10,
+                    repeat: -1,
+                    duration: 1000,
+                });
+
+                this.background4 = this.add
+                    .sprite(-60, -400, 'background4')
+                    .setDepth(2);
+                this.background4.play('plane');
+                this.background5 = this.add
+                    .image(-50, -475, 'background5')
+                    .setDepth(2);
+                this.background6 = this.add
+                    .image(1250, -900, 'background6')
+                    .setDepth(1);
+                this.background7 = this.add
+                    .image(65, -1350, 'background7')
+                    .setDepth(1);
+                this.background8 = this.add
+                    .image(width * 0.9, -1450, 'background8')
+                    .setDepth(2);
+                this.background9 = this.add
+                    .image(10, -2050, 'background9')
+                    .setDepth(2);
+                this.background10 = this.add
+                    .image(width * 0.9, -2650, 'background10')
+                    .setDepth(2);
+
+                this.anims.create({
+                    key: 'onfire',
+                    frames: this.anims.generateFrameNumbers('fire', {
+                        start: 0,
+                        end: 2,
+                    }),
+                    frameRate: 10,
+                    repeat: -1,
+                });
+
+                this.startCometTween = this.add.tween({
+                    targets: this.background7,
+                    x: width - 950,
+                    y: height + 200,
+                    duration: 10000,
+                    paused: true,
+                });
+
+                this.startPlaneTween = this.add.tween({
+                    targets: this.background4,
+                    x: width - 100,
+                    y: height + 100,
+                    duration: 10000,
+                    paused: true,
+                    onUpdate: () => {
+                        this.background5.x = this.background4.x - 510;
+                        this.background5.y = this.background4.y + 80;
+                    },
+                });
+
+                this.planeTweenStarted = false;
+                this.startSateTween = this.add.tween({
+                    targets: this.background8,
+                    x: -50,
+                    angle: 150,
+                    duration: 20000,
+                    paused: true,
+                });
+                this.startUfoTween = this.add.tween({
+                    targets: this.background9,
+                    x: width + 100,
+                    angle: -50,
+                    duration: 20000,
+                    paused: true,
+                });
+                this.startTeslaTween = this.add.tween({
+                    targets: this.background10,
+                    x: -50,
+                    angle: -45,
+                    duration: 20000,
+                    paused: true,
+                });
+                break;
         }
-        this.background11 = this.add.image(670, 250, 'gradient').setDepth(-1);
-        this.background12 = this.add
-            .image(670, height - 310, 'gradient2')
-            .setDepth(-1)
-            .setVisible(false)
-            .setAlpha(0);
-        this.add.image(width * 0.469, height * 0.51, 'balloon').setDepth(10);
-        this.background1 = this.add
-            .image(650, 1250, 'background1')
-            .setScale(1.5)
-            .setDepth(-1);
-        this.background2 = this.add.image(650, 90, 'background2').setDepth(-1);
-
-        // this.background3 = this.add
-        //     .image(650, -700, 'background3')
-        //     .setDepth(-1);
-        this.background3 = this.add
-            .tileSprite(
-                50,
-                -12650,
-                this.cameras.main.width,
-                this.cameras.main.height * 20,
-                'background3'
-            )
-            .setOrigin(0)
-            .setScrollFactor(0)
-            .setDepth(-1);
-
-        this.anims.create({
-            key: 'plane',
-            frames: this.anims.generateFrameNumbers('background4', {
-                start: 0,
-                end: 1,
-            }),
-            frameRate: 10,
-            repeat: -1,
-            duration: 1000,
-        });
-
-        this.background4 = this.add
-            .sprite(-60, -400, 'background4')
-            .setDepth(2);
-        this.background4.play('plane');
-        this.background5 = this.add.image(-50, -475, 'background5').setDepth(2);
-        this.background6 = this.add
-            .image(1250, -900, 'background6')
-            .setDepth(1);
-        this.background7 = this.add.image(65, -1350, 'background7').setDepth(1);
-        this.background8 = this.add
-            .image(width * 0.9, -1450, 'background8')
-            .setDepth(2);
-        this.background9 = this.add.image(10, -2050, 'background9').setDepth(2);
-        this.background10 = this.add
-            .image(width * 0.9, -2650, 'background10')
-            .setDepth(2);
-
-        this.anims.create({
-            key: 'onfire',
-            frames: this.anims.generateFrameNumbers('fire', {
-                start: 0,
-                end: 2,
-            }),
-            frameRate: 10,
-            repeat: -1,
-        });
-
-        this.startCometTween = this.add.tween({
-            targets: this.background7,
-            x: width - 950,
-            y: height + 200,
-            duration: 10000,
-            paused: true,
-        });
-
-        this.startPlaneTween = this.add.tween({
-            targets: this.background4,
-            x: width - 100,
-            y: height + 100,
-            duration: 10000,
-            paused: true,
-            onUpdate: () => {
-                this.background5.x = this.background4.x - 510;
-                this.background5.y = this.background4.y + 80;
-            },
-        });
-
-        this.planeTweenStarted = false;
-        this.startSateTween = this.add.tween({
-            targets: this.background8,
-            x: -50,
-            angle: 150,
-            duration: 20000,
-            paused: true,
-        });
-        this.startUfoTween = this.add.tween({
-            targets: this.background9,
-            x: width + 100,
-            angle: -50,
-            duration: 20000,
-            paused: true,
-        });
-        this.startTeslaTween = this.add.tween({
-            targets: this.background10,
-            x: -50,
-            angle: -45,
-            duration: 20000,
-            paused: true,
-        });
         let fireOn: Phaser.GameObjects.Sprite | null = null;
 
-        const heatButton = this.add
-            .text(width * 0.53, height * 0.87, 'HEAT', {
-                font: 'bold 25px Arial',
-                color: '#ffffff',
-                backgroundColor: '#539802',
-                padding: { x: 10, y: 5 },
-            })
-            .setInteractive()
-            .on('pointerdown', () => {
-                if (!fireOn) {
-                    fireOn = this.add.sprite(
-                        width * 0.4688,
-                        height * 0.683,
-                        'fire'
-                    );
-                    fireOn.play('onfire');
-                }
-                this.isHeating = true;
-            })
-            .on('pointerup', () => {
-                // if (fireOn) {
-                //     fireOn.destroy();
-                //     fireOn = null;
-                // }
-                // this.isHeating = false;
-            })
-            .on('pointerout', () => {
-                // if (fireOn) {
-                //     fireOn.destroy();
-                //     fireOn = null;
-                // }
-                // this.isHeating = false;
-            });
+        switch (true) {
+            case width <= 320:
+                this.add
+                    .text(width * 0.13, height * 0.87, 'HEAT', {
+                        font: 'bold 25px Arial',
+                        color: '#ffffff',
+                        backgroundColor: '#539802',
+                        padding: { x: 10, y: 5 },
+                    })
+                    .setInteractive()
+                    .on('pointerdown', () => {
+                        if (!fireOn) {
+                            fireOn = this.add.sprite(
+                                width * 0.488,
+                                height * 0.695,
+                                'fire'
+                            );
+                            fireOn.play('onfire');
+                        }
+                        this.isHeating = true;
+                    })
+                    .on('pointerup', () => {
+                        // if (fireOn) {
+                        //     fireOn.destroy();
+                        //     fireOn = null;
+                        // }
+                        // this.isHeating = false;
+                    })
+                    .on('pointerout', () => {
+                        // if (fireOn) {
+                        //     fireOn.destroy();
+                        //     fireOn = null;
+                        // }
+                        // this.isHeating = false;
+                    });
 
-        this.add
-            .text(width * 0.6, height * 0.87, 'TAKE', {
-                font: 'bold 25px Arial',
-                color: '#ffffff',
-                backgroundColor: '#C0822B',
-                padding: { x: 10, y: 5 },
-            })
-            .setInteractive()
-            .on('pointerdown', () => {
-                this.scene.restart();
-                this.heatHoldTime = 0;
-                this.isHeating = false;
-                this.planeTweenStarted = false;
-                this.cometStartTween = false;
-                this.sateTweenStarted = false;
-                this.ufoStartTween = false;
-                this.teslaStartTween = false;
-                this.background12Shown = false;
-                this.background3Speed = false;
-                this.background3SpeedMultiplier = 0;
-            });
+                this.add
+                    .text(width * 0.6, height * 0.87, 'TAKE', {
+                        font: 'bold 25px Arial',
+                        color: '#ffffff',
+                        backgroundColor: '#C0822B',
+                        padding: { x: 10, y: 5 },
+                    })
+                    .setInteractive()
+                    .on('pointerdown', () => {
+                        this.scene.restart();
+                        this.heatHoldTime = 0;
+                        this.isHeating = false;
+                        this.planeTweenStarted = false;
+                        this.cometStartTween = false;
+                        this.sateTweenStarted = false;
+                        this.ufoStartTween = false;
+                        this.teslaStartTween = false;
+                        this.background12Shown = false;
+                        this.background3Speed = false;
+                        this.background3SpeedMultiplier = 0;
+                    });
 
-        this.add.text(585, 240, '1.00X').setScale(2.2).setDepth(11);
+                break;
+
+            default:
+                this.add
+                    .text(width * 0.53, height * 0.87, 'HEAT', {
+                        font: 'bold 25px Arial',
+                        color: '#ffffff',
+                        backgroundColor: '#539802',
+                        padding: { x: 10, y: 5 },
+                    })
+                    .setInteractive()
+                    .on('pointerdown', () => {
+                        if (!fireOn) {
+                            fireOn = this.add.sprite(
+                                width * 0.4688,
+                                height * 0.683,
+                                'fire'
+                            );
+                            fireOn.play('onfire');
+                        }
+                        this.isHeating = true;
+                    })
+                    .on('pointerup', () => {
+                        // if (fireOn) {
+                        //     fireOn.destroy();
+                        //     fireOn = null;
+                        // }
+                        // this.isHeating = false;
+                    })
+                    .on('pointerout', () => {
+                        // if (fireOn) {
+                        //     fireOn.destroy();
+                        //     fireOn = null;
+                        // }
+                        // this.isHeating = false;
+                    });
+
+                this.add
+                    .text(width * 0.6, height * 0.87, 'TAKE', {
+                        font: 'bold 25px Arial',
+                        color: '#ffffff',
+                        backgroundColor: '#C0822B',
+                        padding: { x: 10, y: 5 },
+                    })
+                    .setInteractive()
+                    .on('pointerdown', () => {
+                        this.scene.restart();
+                        this.heatHoldTime = 0;
+                        this.isHeating = false;
+                        this.planeTweenStarted = false;
+                        this.cometStartTween = false;
+                        this.sateTweenStarted = false;
+                        this.ufoStartTween = false;
+                        this.teslaStartTween = false;
+                        this.background12Shown = false;
+                        this.background3Speed = false;
+                        this.background3SpeedMultiplier = 0;
+                    });
+                break;
+        }
+
+        switch (true) {
+            case width <= 320:
+                break;
+
+            default:
+                this.add.text(585, 240, '1.00X').setScale(2.2).setDepth(11);
+                break;
+        }
 
         EventBus.emit('current-scene-ready', this);
     }
 
     override update(time: number, delta: number) {
-        if (this.isHeating) {
-            const speed = 0.7;
+        const width = this.cameras.main.width;
+        switch (true) {
+            case width <= 320:
+                if (this.isHeating) {
+                    const speed = 0.7;
 
-            this.background1.y += speed;
-            this.background2.y += speed;
-            this.background3.y += speed;
-            this.background4.y += speed;
-            this.background5.y += speed;
-            this.background6.y += speed;
-            this.background7.y += 0.99;
-            this.background8.y += speed;
-            this.background9.y += speed;
-            this.background10.y += speed;
-            this.background11.y += speed;
+                    this.background1.y += speed;
+                    this.background2.y += 0.4;
+                    this.background3.y += speed;
+                    this.background4.y += speed;
+                    this.background5.y += speed;
+                    this.background6.y += speed;
+                    this.background7.y += 0.99;
+                    this.background8.y += speed;
+                    this.background9.y += speed;
+                    this.background10.y += speed;
+                    this.background11.y += speed;
 
-            this.heatHoldTime += delta;
-            const seconds = (this.heatHoldTime / 1000).toFixed(1);
-            console.log(seconds);
+                    this.heatHoldTime += delta;
+                    const seconds = (this.heatHoldTime / 1000).toFixed(1);
+                    console.log(seconds);
 
-            if (!this.planeTweenStarted && seconds === '11.2') {
-                this.startPlaneTween.play();
-                this.planeTweenStarted = true;
-            }
-            if (!this.cometStartTween && seconds === '20.2') {
-                this.startCometTween.play();
-                this.cometStartTween = true;
-            }
-            if (!this.sateTweenStarted && seconds === '32.2') {
-                this.startSateTween.play();
-                this.sateTweenStarted = true;
-            }
-            if (parseFloat(seconds) >= 33.0) {
-                this.background3.y += 0.99 * this.background3SpeedMultiplier;
-            }
-            if (parseFloat(seconds) >= 33.0 && !this.background3Speed) {
-                this.tweens.addCounter({
-                    from: 0,
-                    to: 1,
-                    duration: 3000,
-                    ease: 'Sine.easeInOut',
-                    onUpdate: (tween) => {
-                        this.background3SpeedMultiplier = tween.getValue() ?? 0;
-                    },
-                });
-                this.background3Speed = true;
-            }
+                    if (!this.planeTweenStarted && seconds === '8.0') {
+                        this.startPlaneTween.play();
+                        this.planeTweenStarted = true;
+                    }
+                    if (!this.cometStartTween && seconds === '20.2') {
+                        this.startCometTween.play();
+                        this.cometStartTween = true;
+                    }
+                    if (!this.sateTweenStarted && seconds === '32.2') {
+                        this.startSateTween.play();
+                        this.sateTweenStarted = true;
+                    }
+                    if (parseFloat(seconds) >= 33.0) {
+                        this.background3.y +=
+                            0.99 * this.background3SpeedMultiplier;
+                    }
+                    if (parseFloat(seconds) >= 33.0 && !this.background3Speed) {
+                        this.tweens.addCounter({
+                            from: 0,
+                            to: 1,
+                            duration: 3000,
+                            ease: 'Sine.easeInOut',
+                            onUpdate: (tween) => {
+                                this.background3SpeedMultiplier =
+                                    tween.getValue() ?? 0;
+                            },
+                        });
+                        this.background3Speed = true;
+                    }
 
-            if (!this.background12Shown && seconds === '32.0') {
-                this.background12.setVisible(true);
-                this.background12Shown = true;
-                this.tweens.add({
-                    targets: this.background12,
-                    alpha: 1,
-                    duration: 10000,
-                    ease: 'Linear',
-                });
-            }
-            if (!this.ufoStartTween && seconds === '47.2') {
-                this.startUfoTween.play();
-                this.ufoStartTween = true;
-            }
-            if (!this.teslaStartTween && seconds === '60.2') {
-                this.startTeslaTween.play();
-                this.teslaStartTween = true;
-            }
+                    if (!this.background12Shown && seconds === '32.0') {
+                        this.background12.setVisible(true);
+                        this.background12Shown = true;
+                        this.tweens.add({
+                            targets: this.background12,
+                            alpha: 1,
+                            duration: 10000,
+                            ease: 'Linear',
+                        });
+                    }
+                    if (!this.ufoStartTween && seconds === '47.2') {
+                        this.startUfoTween.play();
+                        this.ufoStartTween = true;
+                    }
+                    if (!this.teslaStartTween && seconds === '60.2') {
+                        this.startTeslaTween.play();
+                        this.teslaStartTween = true;
+                    }
+                }
+                break;
+
+            default:
+                if (this.isHeating) {
+                    const speed = 0.7;
+
+                    this.background1.y += speed;
+                    this.background2.y += speed;
+                    this.background3.y += speed;
+                    this.background4.y += speed;
+                    this.background5.y += speed;
+                    this.background6.y += speed;
+                    this.background7.y += 0.99;
+                    this.background8.y += speed;
+                    this.background9.y += speed;
+                    this.background10.y += speed;
+                    this.background11.y += speed;
+
+                    this.heatHoldTime += delta;
+                    const seconds = (this.heatHoldTime / 1000).toFixed(1);
+                    console.log(seconds);
+
+                    if (!this.planeTweenStarted && seconds === '11.2') {
+                        this.startPlaneTween.play();
+                        this.planeTweenStarted = true;
+                    }
+                    if (!this.cometStartTween && seconds === '20.2') {
+                        this.startCometTween.play();
+                        this.cometStartTween = true;
+                    }
+                    if (!this.sateTweenStarted && seconds === '32.2') {
+                        this.startSateTween.play();
+                        this.sateTweenStarted = true;
+                    }
+                    if (parseFloat(seconds) >= 33.0) {
+                        this.background3.y +=
+                            0.99 * this.background3SpeedMultiplier;
+                    }
+                    if (parseFloat(seconds) >= 33.0 && !this.background3Speed) {
+                        this.tweens.addCounter({
+                            from: 0,
+                            to: 1,
+                            duration: 3000,
+                            ease: 'Sine.easeInOut',
+                            onUpdate: (tween) => {
+                                this.background3SpeedMultiplier =
+                                    tween.getValue() ?? 0;
+                            },
+                        });
+                        this.background3Speed = true;
+                    }
+
+                    if (!this.background12Shown && seconds === '32.0') {
+                        this.background12.setVisible(true);
+                        this.background12Shown = true;
+                        this.tweens.add({
+                            targets: this.background12,
+                            alpha: 1,
+                            duration: 10000,
+                            ease: 'Linear',
+                        });
+                    }
+                    if (!this.ufoStartTween && seconds === '47.2') {
+                        this.startUfoTween.play();
+                        this.ufoStartTween = true;
+                    }
+                    if (!this.teslaStartTween && seconds === '60.2') {
+                        this.startTeslaTween.play();
+                        this.teslaStartTween = true;
+                    }
+                }
+                break;
         }
     }
 }
