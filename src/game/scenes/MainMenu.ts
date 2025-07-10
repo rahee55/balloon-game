@@ -70,6 +70,9 @@ export class MainMenu extends Scene {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
+        console.log(width);
+        console.log(height);
+
         switch (true) {
             case width <= 320:
                 this.canvas = this.textures.createCanvas(
@@ -1965,7 +1968,7 @@ export class MainMenu extends Scene {
                     });
 
                 break;
-            case width <= 834:
+                case width <= 834 && height <= 1194:
                 this.add
                     .text(width * 0.23, height * 0.87, 'HEAT', {
                         font: 'bold 25px Arial',
