@@ -1965,7 +1965,7 @@ export class MainMenu extends Scene {
                     });
 
                 break;
-                case width <= 834 && height <= 1194:
+            case width <= 834 && height <= 1194:
                 this.add
                     .text(width * 0.23, height * 0.87, 'HEAT', {
                         font: 'bold 25px Arial',
@@ -2503,6 +2503,91 @@ export class MainMenu extends Scene {
 
                     this.background1.y += speed;
                     this.background2.y += 0.6;
+                    this.background3.y += speed;
+                    this.background4.y += speed;
+                    this.background5.y += speed;
+                    this.background6.y += speed;
+                    this.background7.y += 0.99;
+                    this.background8.y += speed;
+                    this.background9.y += speed;
+                    this.background10.y += speed;
+                    this.background11.y += speed;
+
+                    this.heatHoldTime += delta;
+                    const seconds = (this.heatHoldTime / 1000).toFixed(1);
+                    console.log(seconds);
+
+                    if (!this.planeTweenStarted && seconds === '8.0') {
+                        this.startPlaneTween.play();
+                        this.planeTweenStarted = true;
+                    }
+                    if (!this.cometStartTween && seconds === '20.2') {
+                        this.startCometTween.play();
+                        this.cometStartTween = true;
+                    }
+                    if (!this.sateTweenStarted && seconds === '32.2') {
+                        this.startSateTween.play();
+                        this.sateTweenStarted = true;
+                    }
+                    if (parseFloat(seconds) >= 33.0) {
+                        this.background3.y +=
+                            0.99 * this.background3SpeedMultiplier;
+                    }
+                    if (parseFloat(seconds) >= 33.0 && !this.background3Speed) {
+                        this.tweens.addCounter({
+                            from: 0,
+                            to: 1,
+                            duration: 3000,
+                            ease: 'Sine.easeInOut',
+                            onUpdate: (tween) => {
+                                this.background3SpeedMultiplier =
+                                    tween.getValue() ?? 0;
+                            },
+                        });
+                        this.background3Speed = true;
+                    }
+
+                    if (!this.background12Shown && seconds === '32.0') {
+                        this.background12.setVisible(true);
+                        this.background12Shown = true;
+                        this.tweens.add({
+                            targets: this.background12,
+                            alpha: 1,
+                            duration: 10000,
+                            ease: 'Linear',
+                        });
+                    }
+                    if (!this.ufoStartTween && seconds === '47.2') {
+                        this.startUfoTween.play();
+                        this.ufoStartTween = true;
+                    }
+                    if (!this.teslaStartTween && seconds === '60.2') {
+                        this.startTeslaTween.play();
+                        this.teslaStartTween = true;
+                    }
+                    if (time - this.lastUpdateTime > 100) {
+                        this.multiplier += 0.01 * (this.multiplier / 2);
+                        this.text.setText(this.multiplier.toFixed(2) + 'X');
+                        this.lastUpdateTime = time;
+                    }
+
+                    if (!this.stopTriggered && time >= this.newStopTime) {
+                        this.stopTriggered = true;
+                        this.tweens.add({
+                            targets: this.balloon,
+                            x: this.cameras.main.width + 1000,
+                            y: 100,
+                            duration: 600,
+                        });
+                    }
+                }
+                break;
+            case width <= 411:
+                if (this.isHeating) {
+                    const speed = 0.7;
+
+                    this.background1.y += speed;
+                    this.background2.y += 0.5;
                     this.background3.y += speed;
                     this.background4.y += speed;
                     this.background5.y += speed;
