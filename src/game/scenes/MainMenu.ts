@@ -70,8 +70,8 @@ export class MainMenu extends Scene {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
-        console.log("width" + width);
-        console.log("height" + height);
+        alert("width :" + width);
+        alert("height :" + height);
 
         switch (true) {
             case width <= 320:
