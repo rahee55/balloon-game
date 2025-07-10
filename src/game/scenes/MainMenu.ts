@@ -70,9 +70,6 @@ export class MainMenu extends Scene {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
-        alert("width :" + width);
-        alert("height :" + height);
-
         switch (true) {
             case width <= 320:
                 this.canvas = this.textures.createCanvas(
@@ -107,10 +104,10 @@ export class MainMenu extends Scene {
                     this.canvas2.refresh();
                 }
                 this.background11 = this.add
-                    .image(160, 250, 'gradient')
+                    .image(width /2, 250, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(160, height - 222, 'gradient2')
+                    .image(width /2, height /2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
@@ -150,55 +147,55 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width == 360:
                         this.background11 = this.add
-                            .image(180, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 375:
                         this.background11 = this.add
-                            .image(187, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 384:
                         this.background11 = this.add
-                            .image(192, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 390:
                         this.background11 = this.add
-                            .image(195, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     default:
                         this.background11 = this.add
-                            .image(196, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width == 360:
                         this.background12 = this.add
-                            .image(180, height - 300, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 375:
                         this.background12 = this.add
-                            .image(187, height - 317, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 384:
                         this.background12 = this.add
-                            .image(192, height - 335, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 390:
                         this.background12 = this.add
-                            .image(185, height - 265, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -206,7 +203,7 @@ export class MainMenu extends Scene {
 
                     default:
                         this.background12 = this.add
-                            .image(195, height - 335, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -248,58 +245,58 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width == 402:
                         this.background11 = this.add
-                            .image(201, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 412:
                         this.background11 = this.add
-                            .image(206, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 414:
                         this.background11 = this.add
-                            .image(207, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
 
                     default:
                         this.background11 = this.add
-                            .image(215, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width == 402:
                         this.background12 = this.add
-                            .image(201, height - 345, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 412:
                         this.background12 = this.add
-                            .image(206, height - 375, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 414:
                         this.background12 = this.add
-                            .image(207, height - 360, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 428:
                         this.background12 = this.add
-                            .image(215, height - 372, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     default:
                         this.background12 = this.add
-                            .image(215, height - 372, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -341,32 +338,32 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width <= 440:
                         this.background11 = this.add
-                            .image(220, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width <= 448:
                         this.background11 = this.add
-                            .image(224, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
 
                     default:
                         this.background11 = this.add
-                            .image(240, 310, 'gradient')
+                            .image(width /2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width == 440:
                         this.background12 = this.add
-                            .image(220, height - 385, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 448:
                         this.background12 = this.add
-                            .image(224, height - 416, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -374,7 +371,7 @@ export class MainMenu extends Scene {
 
                     default:
                         this.background12 = this.add
-                            .image(240, height - 387, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -416,32 +413,32 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width <= 768:
                         this.background11 = this.add
-                            .image(385, 480, 'gradient')
+                            .image(width /2, 480, 'gradient')
                             .setDepth(-1);
                         break;
                     case width <= 810:
                         this.background11 = this.add
-                            .image(405, 580, 'gradient')
+                            .image(width /2, 580, 'gradient')
                             .setDepth(-1);
                         break;
 
                     default:
                         this.background11 = this.add
-                            .image(418, 580, 'gradient')
+                            .image(width /2, 580, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width <= 768:
                         this.background12 = this.add
-                            .image(385, height - 480, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width <= 810:
                         this.background12 = this.add
-                            .image(405, height - 505, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -449,7 +446,7 @@ export class MainMenu extends Scene {
 
                     default:
                         this.background12 = this.add
-                            .image(415, height - 520, 'gradient2')
+                            .image(width /2, height /2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -489,10 +486,10 @@ export class MainMenu extends Scene {
                     this.canvas2.refresh();
                 }
                 this.background11 = this.add
-                    .image(512, 788, 'gradient')
+                    .image(width /2, 788, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(513, height - 650, 'gradient2')
+                    .image(width /2, height /2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
@@ -530,10 +527,10 @@ export class MainMenu extends Scene {
                     this.canvas2.refresh();
                 }
                 this.background11 = this.add
-                    .image(710, 348, 'gradient')
+                    .image(width /2, 348, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(700, height - 469, 'gradient2')
+                    .image(width /2, height / 2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
@@ -572,10 +569,10 @@ export class MainMenu extends Scene {
                     canvas2.refresh();
                 }
                 this.background11 = this.add
-                    .image(670, 250, 'gradient')
+                    .image(width / 2, 250, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(670, height - 310, 'gradient2')
+                    .image(width /2 , height /2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
