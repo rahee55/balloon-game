@@ -70,9 +70,6 @@ export class MainMenu extends Scene {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
-        alert(width + " : width")
-        alert(height + " : height")
-
         switch (true) {
             case width <= 320:
                 this.canvas = this.textures.createCanvas(
