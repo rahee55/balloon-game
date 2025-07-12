@@ -733,7 +733,7 @@ export class MainMenu extends Scene {
                             .setScrollFactor(0)
                             .setDepth(-1);
                         break;
-                    case width <= 360 && height <= 617:
+                    case width <= 360 && height <= 620:
                         this.background3 = this.add
                             .tileSprite(
                                 10,
@@ -746,11 +746,63 @@ export class MainMenu extends Scene {
                             .setScrollFactor(0)
                             .setDepth(-1);
                         break;
-                    case width == 375:
+                    case width <= 375:
                         this.background3 = this.add
                             .tileSprite(
                                 10,
                                 -13850,
+                                this.cameras.main.width,
+                                this.cameras.main.height * 20,
+                                'background3'
+                            )
+                            .setOrigin(0)
+                            .setScrollFactor(0)
+                            .setDepth(-1);
+                        break;
+                    case width <= 384 && height <= 670:
+                        this.background3 = this.add
+                            .tileSprite(
+                                10,
+                                -14150,
+                                this.cameras.main.width,
+                                this.cameras.main.height * 20,
+                                'background3'
+                            )
+                            .setOrigin(0)
+                            .setScrollFactor(0)
+                            .setDepth(-1);
+                        break;
+                    case width <= 384 && height <= 700:
+                        this.background3 = this.add
+                            .tileSprite(
+                                10,
+                                -14850,
+                                this.cameras.main.width,
+                                this.cameras.main.height * 20,
+                                'background3'
+                            )
+                            .setOrigin(0)
+                            .setScrollFactor(0)
+                            .setDepth(-1);
+                        break;
+                    case width <= 393 && height <= 690:
+                        this.background3 = this.add
+                            .tileSprite(
+                                10,
+                                -14110,
+                                this.cameras.main.width,
+                                this.cameras.main.height * 20,
+                                'background3'
+                            )
+                            .setOrigin(0)
+                            .setScrollFactor(0)
+                            .setDepth(-1);
+                        break;
+                    case width <= 393 && height <= 715:
+                        this.background3 = this.add
+                            .tileSprite(
+                                10,
+                                -15210,
                                 this.cameras.main.width,
                                 this.cameras.main.height * 20,
                                 'background3'
@@ -876,11 +928,50 @@ export class MainMenu extends Scene {
                     .setScale(0.35)
                     .setDepth(-1);
                 switch (true) {
-                    case width == 402:
+                    case width <= 402:
                         this.background3 = this.add
                             .tileSprite(
                                 10,
                                 -15000,
+                                this.cameras.main.width,
+                                this.cameras.main.height * 20,
+                                'background3'
+                            )
+                            .setOrigin(0)
+                            .setScrollFactor(0)
+                            .setDepth(-1);
+                        break;
+                    case width <= 412 && height <= 690:
+                        this.background3 = this.add
+                            .tileSprite(
+                                10,
+                                -14800,
+                                this.cameras.main.width,
+                                this.cameras.main.height * 20,
+                                'background3'
+                            )
+                            .setOrigin(0)
+                            .setScrollFactor(0)
+                            .setDepth(-1);
+                        break;
+                    case width <= 412 && height <= 722:
+                        this.background3 = this.add
+                            .tileSprite(
+                                10,
+                                -15450,
+                                this.cameras.main.width,
+                                this.cameras.main.height * 20,
+                                'background3'
+                            )
+                            .setOrigin(0)
+                            .setScrollFactor(0)
+                            .setDepth(-1);
+                        break;
+                    case width <= 412 && height <= 735:
+                        this.background3 = this.add
+                            .tileSprite(
+                                10,
+                                -15500,
                                 this.cameras.main.width,
                                 this.cameras.main.height * 20,
                                 'background3'
@@ -1753,7 +1844,7 @@ export class MainMenu extends Scene {
                                         .setDepth(9);
 
                                     break;
-                                case width <= 360 && height <= 617:
+                                case width <= 360 && height <= 620:
                                     fireOn = this.add
                                         .sprite(
                                             width * 0.498,
@@ -1763,7 +1854,7 @@ export class MainMenu extends Scene {
                                         .setDepth(9);
 
                                     break;
-                                case width == 375:
+                                case width <= 375:
                                     fireOn = this.add
                                         .sprite(
                                             width * 0.498,
@@ -1771,7 +1862,51 @@ export class MainMenu extends Scene {
                                             'fire'
                                         )
                                         .setDepth(9);
-
+                                    break;
+                                case width <= 384 && height <= 670:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.498,
+                                            height * 0.668,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
+                                case width <= 384 && height <= 700:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.498,
+                                            height * 0.662,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
+                                case width <= 393 && height <= 655:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.498,
+                                            height * 0.672,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
+                                case width <= 393 && height <= 690:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.498,
+                                            height * 0.662,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
+                                case width <= 393 && height <= 715:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.498,
+                                            height * 0.66,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
                                     break;
 
                                 default:
@@ -1846,6 +1981,7 @@ export class MainMenu extends Scene {
                         backgroundColor: '#539802',
                         padding: { x: 10, y: 5 },
                     })
+                    .setDepth(10)
                     .setInteractive()
                     .on('pointerdown', () => {
                         if (!fireOn) {
@@ -1859,11 +1995,47 @@ export class MainMenu extends Scene {
                                         )
                                         .setDepth(9);
                                     break;
+                                case width <= 412 && height <= 610:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.508,
+                                            height * 0.685,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
+                                case width <= 412 && height <= 690:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.508,
+                                            height * 0.663,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
                                 case width <= 412 && height <= 722:
                                     fireOn = this.add
                                         .sprite(
                                             width * 0.508,
                                             height * 0.6555,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
+                                case width <= 412 && height <= 735:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.508,
+                                            height * 0.6555,
+                                            'fire'
+                                        )
+                                        .setDepth(9);
+                                    break;
+                                case width <= 412 && height <= 760:
+                                    fireOn = this.add
+                                        .sprite(
+                                            width * 0.508,
+                                            height * 0.6495,
                                             'fire'
                                         )
                                         .setDepth(9);
@@ -1924,6 +2096,7 @@ export class MainMenu extends Scene {
                         backgroundColor: '#C0822B',
                         padding: { x: 10, y: 5 },
                     })
+                    .setDepth(10)
                     .setInteractive()
                     .on('pointerdown', () => {
                         this.scene.restart();
@@ -2361,9 +2534,19 @@ export class MainMenu extends Scene {
                     .setOrigin(0.5)
                     .setDepth(11);
                 break;
-            case width <= 360 && height <= 740:
+            case width <= 360 && height <= 620:
                 this.text = this.add
-                    .text(180, 290, '1.00X', {
+                    .text(170, 260, '1.00X', {
+                        font: 'bold 32px Arial',
+                        color: '#ffffff',
+                    })
+                    .setScale(1.2)
+                    .setOrigin(0.5)
+                    .setDepth(11);
+                break;
+            case width <= 360 && height <= 640:
+                this.text = this.add
+                    .text(175, 280, '1.00X', {
                         font: 'bold 32px Arial',
                         color: '#ffffff',
                     })
@@ -2381,9 +2564,29 @@ export class MainMenu extends Scene {
                     .setOrigin(0.5)
                     .setDepth(11);
                 break;
+            case width <= 384 && height <= 670:
+                this.text = this.add
+                    .text(185, 290, '1.00X', {
+                        font: 'bold 32px Arial',
+                        color: '#ffffff',
+                    })
+                    .setScale(1.2)
+                    .setOrigin(0.5)
+                    .setDepth(11);
+                break;
             case width <= 384:
                 this.text = this.add
                     .text(190, 310, '1.00X', {
+                        font: 'bold 32px Arial',
+                        color: '#ffffff',
+                    })
+                    .setScale(1.2)
+                    .setOrigin(0.5)
+                    .setDepth(11);
+                break;
+            case width <= 393 && height <= 655:
+                this.text = this.add
+                    .text(190, 285, '1.00X', {
                         font: 'bold 32px Arial',
                         color: '#ffffff',
                     })
@@ -2401,9 +2604,9 @@ export class MainMenu extends Scene {
                     .setOrigin(0.5)
                     .setDepth(11);
                 break;
-            case width <= 412:
+            case width <= 412 && height <= 610:
                 this.text = this.add
-                    .text(200, 340, '1.00X', {
+                    .text(205, 270, '1.00X', {
                         font: 'bold 32px Arial',
                         color: '#ffffff',
                     })
@@ -2411,9 +2614,39 @@ export class MainMenu extends Scene {
                     .setOrigin(0.5)
                     .setDepth(11);
                 break;
-            case width <= 412 && height <= 732:
+            case width <= 412 && height <= 690:
                 this.text = this.add
-                    .text(200, 240, '1.00X', {
+                    .text(205, 300, '1.00X', {
+                        font: 'bold 32px Arial',
+                        color: '#ffffff',
+                    })
+                    .setScale(1.2)
+                    .setOrigin(0.5)
+                    .setDepth(11);
+                break;
+            case width <= 412 && height <= 722:
+                this.text = this.add
+                    .text(205, 320, '1.00X', {
+                        font: 'bold 32px Arial',
+                        color: '#ffffff',
+                    })
+                    .setScale(1.2)
+                    .setOrigin(0.5)
+                    .setDepth(11);
+                break;
+            case width <= 412 && height <= 735:
+                this.text = this.add
+                    .text(205, 320, '1.00X', {
+                        font: 'bold 32px Arial',
+                        color: '#ffffff',
+                    })
+                    .setScale(1.2)
+                    .setOrigin(0.5)
+                    .setDepth(11);
+                break;
+            case width <= 412 && height <= 760:
+                this.text = this.add
+                    .text(200, 340, '1.00X', {
                         font: 'bold 32px Arial',
                         color: '#ffffff',
                     })
