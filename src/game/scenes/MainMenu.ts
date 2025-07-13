@@ -3020,7 +3020,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '8.0') {
                         this.startPlaneTween.play();
@@ -3107,7 +3106,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '8.0') {
                         this.startPlaneTween.play();
@@ -3174,7 +3172,7 @@ export class MainMenu extends Scene {
                     }
                 }
                 break;
-            case width <= 412:
+            case width <= 411:
                 if (this.isHeating) {
                     const speed = 0.7;
 
@@ -3192,7 +3190,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '8.0') {
                         this.startPlaneTween.play();
@@ -3277,7 +3274,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '8.0') {
                         this.startPlaneTween.play();
@@ -3362,7 +3358,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '8.0') {
                         this.startPlaneTween.play();
@@ -3447,7 +3442,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '11.2') {
                         this.startPlaneTween.play();
@@ -3532,7 +3526,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '11.2') {
                         this.startPlaneTween.play();
@@ -3617,7 +3610,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '11.2') {
                         this.startPlaneTween.play();
@@ -3703,7 +3695,6 @@ export class MainMenu extends Scene {
 
                     this.heatHoldTime += delta;
                     const seconds = (this.heatHoldTime / 1000).toFixed(1);
-                    console.log(seconds);
 
                     if (!this.planeTweenStarted && seconds === '11.2') {
                         this.startPlaneTween.play();
