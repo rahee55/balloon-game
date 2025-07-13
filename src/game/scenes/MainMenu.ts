@@ -2611,18 +2611,18 @@ export class MainMenu extends Scene {
                         });
                     })
                     .on('pointerup', () => {
-                        // if (fireOn) {
-                        //     fireOn.destroy();
-                        //     fireOn = null;
-                        // }
-                        // this.isHeating = false;
+                        if (fireOn) {
+                            fireOn.destroy();
+                            fireOn = null;
+                        }
+                        this.isHeating = false;
                     })
                     .on('pointerout', () => {
-                        // if (fireOn) {
-                        //     fireOn.destroy();
-                        //     fireOn = null;
-                        // }
-                        // this.isHeating = false;
+                        if (fireOn) {
+                            fireOn.destroy();
+                            fireOn = null;
+                        }
+                        this.isHeating = false;
                     });
 
                 this.add
