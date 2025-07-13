@@ -76,9 +76,6 @@ export class MainMenu extends Scene {
         const backgrounds = ['background1', 'location2', 'location3'];
         const selectedBack = Phaser.Utils.Array.GetRandom(backgrounds);
 
-        alert(width);
-        alert(height);
-
         switch (true) {
             case width <= 320:
                 this.canvas = this.textures.createCanvas(
@@ -3180,8 +3177,6 @@ export class MainMenu extends Scene {
             case width <= 412:
                 if (this.isHeating) {
                     const speed = 0.7;
-
-                    alert(speed)
 
                     this.background1.y += speed;
                     this.background2.y += 0.5;
