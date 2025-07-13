@@ -592,7 +592,7 @@ export class MainMenu extends Scene {
                     .image(width * 0.489, height * 0.51, 'balloon')
                     .setDepth(10);
                 this.background1 = this.add
-                    .image(160, 450, 'background1')
+                    .image(160, 450, selectedBack)
                     .setScale(0.34)
                     .setDepth(-1);
                 this.background2 = this.add
@@ -704,7 +704,7 @@ export class MainMenu extends Scene {
                     .image(width * 0.499, height * 0.51, 'balloon')
                     .setDepth(10);
                 this.background1 = this.add
-                    .image(182, 630, 'background1')
+                    .image(182, 630, selectedBack)
                     .setScale(0.44)
                     .setDepth(-1);
                 this.background2 = this.add
@@ -977,7 +977,7 @@ export class MainMenu extends Scene {
                     .image(width * 0.509, height * 0.51, 'balloon')
                     .setDepth(10);
                 this.background1 = this.add
-                    .image(219, 650, 'background1')
+                    .image(219, 650, selectedBack)
                     .setScale(0.48)
                     .setDepth(-1);
                 this.background2 = this.add
@@ -1172,7 +1172,7 @@ export class MainMenu extends Scene {
                     .image(width * 0.509, height * 0.51, 'balloon')
                     .setDepth(10);
                 this.background1 = this.add
-                    .image(239, 700, 'background1')
+                    .image(239, 700, selectedBack)
                     .setScale(0.51)
                     .setDepth(-1);
                 this.background2 = this.add
@@ -1321,7 +1321,7 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width == 768:
                         this.background1 = this.add
-                            .image(430, 1250, 'background1')
+                            .image(430, 1250, selectedBack)
                             .setScale(0.9)
                             .setDepth(-1);
                         break;
@@ -1496,7 +1496,7 @@ export class MainMenu extends Scene {
                     .setScale(1.3)
                     .setDepth(10);
                 this.background1 = this.add
-                    .image(550, 1750, 'background1')
+                    .image(550, 1750, selectedBack)
                     .setScale(1.2)
                     .setDepth(-1);
                 this.background2 = this.add
@@ -1612,7 +1612,7 @@ export class MainMenu extends Scene {
                     .image(width * 0.519, height * 0.62, 'balloon')
                     .setDepth(10);
                 this.background1 = this.add
-                    .image(720, 1500, 'background1')
+                    .image(720, 1500, selectedBack)
                     .setScale(1.5)
                     .setDepth(-1);
                 this.background2 = this.add
