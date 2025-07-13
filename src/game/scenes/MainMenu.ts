@@ -76,8 +76,8 @@ export class MainMenu extends Scene {
         const backgrounds = ['background1', 'location2', 'location3'];
         const selectedBack = Phaser.Utils.Array.GetRandom(backgrounds);
 
-        // alert(width);
-        // alert(height);
+        alert(width);
+        alert(height);
 
         switch (true) {
             case width <= 320:
