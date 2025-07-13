@@ -41,6 +41,7 @@ export class MainMenu extends Scene {
     lastUpdateTime: number = 0;
     multiplier: number = 1.0;
     text: Phaser.GameObjects.Text;
+    isStarted: boolean = false;
 
     constructor() {
         super('MainMenu');
@@ -75,8 +76,8 @@ export class MainMenu extends Scene {
         const backgrounds = ['background1', 'location2', 'location3'];
         const selectedBack = Phaser.Utils.Array.GetRandom(backgrounds);
 
-        console.log(width);
-        console.log(height);
+        alert(width);
+        alert(height);
 
         switch (true) {
             case width <= 320:
@@ -112,10 +113,10 @@ export class MainMenu extends Scene {
                     this.canvas2.refresh();
                 }
                 this.background11 = this.add
-                    .image(width /2, 250, 'gradient')
+                    .image(width / 2, 250, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(width /2, height /2, 'gradient2')
+                    .image(width / 2, height / 2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
@@ -155,55 +156,55 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width == 360:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 375:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 384:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 390:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     default:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width == 360:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 375:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 384:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 390:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -211,7 +212,7 @@ export class MainMenu extends Scene {
 
                     default:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -253,58 +254,58 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width == 402:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 412:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width == 414:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
 
                     default:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width == 402:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 412:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 414:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 428:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     default:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -346,32 +347,32 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width <= 440:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                     case width <= 448:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
 
                     default:
                         this.background11 = this.add
-                            .image(width /2, 310, 'gradient')
+                            .image(width / 2, 310, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width == 440:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width == 448:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -379,7 +380,7 @@ export class MainMenu extends Scene {
 
                     default:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -421,32 +422,32 @@ export class MainMenu extends Scene {
                 switch (true) {
                     case width <= 768:
                         this.background11 = this.add
-                            .image(width /2, 480, 'gradient')
+                            .image(width / 2, 480, 'gradient')
                             .setDepth(-1);
                         break;
                     case width <= 810:
                         this.background11 = this.add
-                            .image(width /2, 580, 'gradient')
+                            .image(width / 2, 580, 'gradient')
                             .setDepth(-1);
                         break;
 
                     default:
                         this.background11 = this.add
-                            .image(width /2, 580, 'gradient')
+                            .image(width / 2, 580, 'gradient')
                             .setDepth(-1);
                         break;
                 }
                 switch (true) {
                     case width <= 768:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
                         break;
                     case width <= 810:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -454,7 +455,7 @@ export class MainMenu extends Scene {
 
                     default:
                         this.background12 = this.add
-                            .image(width /2, height /2, 'gradient2')
+                            .image(width / 2, height / 2, 'gradient2')
                             .setDepth(-1)
                             .setVisible(false)
                             .setAlpha(0);
@@ -494,10 +495,10 @@ export class MainMenu extends Scene {
                     this.canvas2.refresh();
                 }
                 this.background11 = this.add
-                    .image(width /2, 788, 'gradient')
+                    .image(width / 2, 788, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(width /2, height /2, 'gradient2')
+                    .image(width / 2, height / 2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
@@ -535,10 +536,10 @@ export class MainMenu extends Scene {
                     this.canvas2.refresh();
                 }
                 this.background11 = this.add
-                    .image(width /2, 348, 'gradient')
+                    .image(width / 2, 348, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(width /2, height / 2, 'gradient2')
+                    .image(width / 2, height / 2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
@@ -580,7 +581,7 @@ export class MainMenu extends Scene {
                     .image(width / 2, 250, 'gradient')
                     .setDepth(-1);
                 this.background12 = this.add
-                    .image(width /2 , height /2, 'gradient2')
+                    .image(width / 2, height / 2, 'gradient2')
                     .setDepth(-1)
                     .setVisible(false)
                     .setAlpha(0);
@@ -1181,7 +1182,7 @@ export class MainMenu extends Scene {
                     .setDepth(-1);
 
                 switch (true) {
-                    case width <= 440 && height <= 770 :
+                    case width <= 440 && height <= 770:
                         this.background3 = this.add
                             .tileSprite(
                                 10,
@@ -2309,15 +2310,15 @@ export class MainMenu extends Scene {
                             }
                             fireOn.play('onfire');
                             this.newStopTime = Phaser.Math.Between(300, 9000);
-                        this.stopTriggered = false;
-                        this.time.delayedCall(this.newStopTime, () => {
-                            this.stopTriggered = true;
-                            this.tweens.add({
-                                targets: this.balloon,
-                                y: this.cameras.main.height + 1000,
-                                duration: 600,
+                            this.stopTriggered = false;
+                            this.time.delayedCall(this.newStopTime, () => {
+                                this.stopTriggered = true;
+                                this.tweens.add({
+                                    targets: this.balloon,
+                                    y: this.cameras.main.height + 1000,
+                                    duration: 600,
+                                });
                             });
-                        });
                         }
                         this.isHeating = true;
                     })
@@ -2361,7 +2362,7 @@ export class MainMenu extends Scene {
                     });
 
                 break;
-            case width <= 834 :
+            case width <= 834:
                 this.add
                     .text(width * 0.23, height * 0.87, 'HEAT', {
                         font: 'bold 25px Arial',
@@ -2380,14 +2381,14 @@ export class MainMenu extends Scene {
                                         height * 0.756,
                                         'fire'
                                     );
-                                    break;  
+                                    break;
                                 case width <= 834 && height <= 1112:
                                     fireOn = this.add.sprite(
                                         width * 0.518,
                                         height * 0.746,
                                         'fire'
                                     );
-                                    break;  
+                                    break;
 
                                 default:
                                     fireOn = this.add.sprite(
@@ -2604,16 +2605,22 @@ export class MainMenu extends Scene {
                             fireOn.play('onfire');
                         }
                         this.isHeating = true;
-                        this.newStopTime = Phaser.Math.Between(300, 9000);
-                        this.stopTriggered = false;
-                        this.time.delayedCall(this.newStopTime, () => {
-                            this.stopTriggered = true;
-                            this.tweens.add({
-                                targets: this.balloon,
-                                y: this.cameras.main.height + 1000,
-                                duration: 600,
+
+                        if (!this.isStarted) {
+                            this.newStopTime =
+                                this.time.now + Phaser.Math.Between(3000, 9000);
+                            this.stopTriggered = false;
+                            this.isStarted = true;
+                            this.lastUpdateTime = 0;
+                            this.time.delayedCall(this.newStopTime, () => {
+                                this.stopTriggered = true;
+                                this.tweens.add({
+                                    targets: this.balloon,
+                                    y: this.cameras.main.height + 1000,
+                                    duration: 600,
+                                });
                             });
-                        });
+                        }
                     })
                     .on('pointerup', () => {
                         if (fireOn) {
@@ -2967,7 +2974,8 @@ export class MainMenu extends Scene {
                     .setOrigin(0.5)
                     .setDepth(11);
                 break;
-        }
+      
+            }
 
         EventBus.emit('current-scene-ready', this);
     }
@@ -3730,12 +3738,12 @@ export class MainMenu extends Scene {
                         this.lastUpdateTime = time;
                     }
 
-                    if (!this.stopTriggered && time >= this.newStopTime ) {
+                    if (!this.stopTriggered && this.isStarted && this.time.now >= this.newStopTime) {
                         this.stopTriggered = true;
-                        
+                        this.isHeating = false;
                     }
                 }
-            break;
+                break;
         }
     }
 }
