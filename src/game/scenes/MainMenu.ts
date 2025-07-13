@@ -48,6 +48,8 @@ export class MainMenu extends Scene {
     preload() {
         this.load.image('balloon', 'assets/images/airballoon-red.png');
         this.load.image('background1', 'assets/images/location1.png');
+        this.load.image('location2', 'assets/images/location2.png');
+        this.load.image('location3', 'assets/images/location3.png');
         this.load.image('background2', 'assets/images/clouds.png');
         this.load.image('background3', 'assets/images/stars.png');
         this.load.spritesheet('background4', 'assets/images/plane.png', {
@@ -69,6 +71,9 @@ export class MainMenu extends Scene {
     create() {
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
+
+        const backgrounds = ['background1', 'location2', 'location3'];
+        const selectedBack = Phaser.Utils.Array.GetRandom(backgrounds);
 
         console.log(width);
         console.log(height);
@@ -1723,7 +1728,7 @@ export class MainMenu extends Scene {
                     .image(width * 0.469, height * 0.51, 'balloon')
                     .setDepth(10);
                 this.background1 = this.add
-                    .image(650, 1250, 'background1')
+                    .image(650, 1250, selectedBack)
                     .setScale(1.5)
                     .setDepth(-1);
                 this.background2 = this.add
