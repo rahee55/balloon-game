@@ -3181,6 +3181,8 @@ export class MainMenu extends Scene {
                 if (this.isHeating) {
                     const speed = 0.7;
 
+                    alert(speed)
+
                     this.background1.y += speed;
                     this.background2.y += 0.5;
                     this.background3.y += speed;
